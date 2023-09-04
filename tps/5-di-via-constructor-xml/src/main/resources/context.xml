@@ -1,0 +1,18 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<bean id="mon_moteur_diesel"
+		class="com.formation.domain.MoteurDiesel" />
+
+	<bean id="ma_voiture" class="com.formation.domain.Voiture">
+	
+		<constructor-arg>
+			<ref bean="mon_moteur_diesel"/>
+		</constructor-arg>
+		
+		<property name="constructeur" value="renault"/>
+	</bean>
+
+</beans>
+	
