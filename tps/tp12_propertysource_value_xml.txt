@@ -1,0 +1,49 @@
+
+======= comprendre les annotations @PropertySource et @Value et l'interface Environment avec une config Java =======
+
+Copier le projet 11_propertysource_value et renommer en 12_propertysource_value_xml
+
+Supprimer dans la classe AppConfig l'annotation @PropertySource(value = { "classpath:application.properties" })
+
+Supprimer aussi la méthode public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() 
+
+Supprimer l'attribut environment de la classe FormationSpring. Voici le nouveau contenu de la classe FormationSpring :
+
+	@Value("${formation.module:Java}")
+    private String module;
+	
+	@Value("${formation.salle:salleParDefaut}")
+    private String salle;
+	
+	@Value("${formation.lieu}")
+    private String lieu;
+ 
+	@Override
+	public void lireMetadata() {
+		System.out.println("Lieu formation :"
+                + lieu);
+ 
+        System.out.println("Module formation : " + module);
+        System.out.println("Salle formation : " +salle);
+		
+	}
+	
+Créer un fichier context.xml avec le contenu suivant :
+
+	<context:component-scan base-package="com.formation" />
+	<bean
+		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:application.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	
+Supprimer la classe de configuration 
+
+Créer une classe de test
+	Y initialiser le contexte Spring avec le fichier context.xml
+	Récupérer le bean de type FormationMetadata et appeler la méthode lireMetadata
