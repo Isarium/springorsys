@@ -1,0 +1,22 @@
+Principe d'injection de dépendances
+
+Configuration contexte par XML
+	Injection par constructeur
+	Injection par setter
+	Injection de champ simple
+	
+Configuration du contexte par classe Java et factories de beans
+		Annotation @Configuration
+		Annotation @Bean
+		Injection manuelle des beans via les factories sur la classe de configuration
+		
+Configuration du contexte par classe Java et scan des packages contenant les beans	
+	Annotation @Configuration
+	Annotation @ComponentScan
+	Annotation @Component
+	Injection manuelle des beans via les factories sur la classe de configuration
+	
+Initialisation du contexte défini via XML
+Initialisation du contexte défini via une classe Java
+
+Récupération de beans dans le contexte
