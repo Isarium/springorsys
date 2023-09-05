@@ -1,9 +1,33 @@
 
 ======= comprendre les profiles avec Spring avec xml =======
 
-copier le projet 13_profiles et renommer le en 14_profiles_xml
+Créer un projet 14_profiles_xml
 
-Supprimer la classe AppConfig
+Ajouter la dépendance spring context dans le fichier pom.xml
+
+Créer une classe Donnees avec les attributs urlCours, responsable, salleCours tous de type String
+	Ajouter les getters/Setters pour tous les champs 
+	générer la méthode toString
+
+Créer une interface CursusConfig :
+	public interface CursusConfig {
+		public Donnees getDonneesCursus();
+	}
+
+
+Créer une classe MasterConfig implémentant CursusConfig
+	Annoter la classe MasterConfig avec @Profile("master") et @Configuration
+	Implémenter la méthode getDonneesCursus de MasterConfig en créant un objet de type Donnees et en initialisant ses attributs 
+		(ex : donneesmaster.setResponsable("Responsable du master");
+	Annoter la méthode getDonneesCursus avec @Bean("data")
+	
+Créer une classe LicenceConfig implémentant CursusConfig
+	Annoter la classe LicenceConfig avec @Profile("licence") et @Configuration
+	Implémenter la méthode getDonneesCursus de LicenceConfig en créant un objet de type Donnees et en initialisant ses attributs 
+		(ex : donneesLicence.setResponsable("Responsable de la licence");
+	Annoter la méthode getDonneesCursus avec @Bean("data") 
+	
+	
 
 Créer dans src/main/resources un fichier licence-context.xml avec le contenu suivant :
 	<?xml version="1.0" encoding="UTF-8"?>
@@ -60,7 +84,7 @@ Créer dans src/main/resources un fichier context.xml avec le contenu suivant :
 		</beans>
 	</beans>
 	
-Modifier le contenu de la classe AppMain :
+Créer une classe AppMain :
 	public static void main(String args[]) {
         AbstractApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		Donnees bean = (Donnees) context.getBean("data");
