@@ -15,7 +15,6 @@ Créer une interface FormationMetadata avec une méthode :
 	public void lireMetadata();
 	
 Créer une classe FormationSpring implémentant FormationMetadata
-	Annoter la classe avec @Service("formation_spring")
 	Voici le contenu de de la classe FormationSpring :
 
 	@Value("${formation.module:Java}")
