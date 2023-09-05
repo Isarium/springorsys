@@ -15,18 +15,6 @@ Créer une interface CursusConfig :
 	}
 
 
-Créer une classe MasterConfig implémentant CursusConfig
-	Annoter la classe MasterConfig avec @Profile("master") et @Configuration
-	Implémenter la méthode getDonneesCursus de MasterConfig en créant un objet de type Donnees et en initialisant ses attributs 
-		(ex : donneesmaster.setResponsable("Responsable du master");
-	Annoter la méthode getDonneesCursus avec @Bean("data")
-	
-Créer une classe LicenceConfig implémentant CursusConfig
-	Annoter la classe LicenceConfig avec @Profile("licence") et @Configuration
-	Implémenter la méthode getDonneesCursus de LicenceConfig en créant un objet de type Donnees et en initialisant ses attributs 
-		(ex : donneesLicence.setResponsable("Responsable de la licence");
-	Annoter la méthode getDonneesCursus avec @Bean("data") 
-	
 	
 
 Créer dans src/main/resources un fichier licence-context.xml avec le contenu suivant :
