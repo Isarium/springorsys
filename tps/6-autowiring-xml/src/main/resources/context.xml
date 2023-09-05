@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <!-- Déclaration bean mon_joueur de type Joueur -->
+	<bean id="mon_joueur" class="com.formation.Joueur" >
+		<property name="nom" value="Mario"/>
+	</bean>
+
+ <!-- Déclaration bean mon_jeu de type jeu et injection par type de la dépendance joueur -->
+	<bean id="mon_jeu" class="com.formation.Jeu" autowire="byType"/>
+
+
+</beans>
+	
