@@ -28,12 +28,11 @@ UserService
 	findById(String userId) => Rechercher en base si le user existe ou pas
 	
 ==== Partie 2
-La configuration du bean pour utiliser @Value doit se faire en Java (et non en xml)
 Créer une classe géré par spring DummyDuplicatas qui va instancier quelques duplicatas au démarrage 
 de l'application si le profil spécifié est "dev" (Utilisation @PostConstruct)
 	=> appeler DuplicataService pour cela
 
-====== Partie 3
+====== Partie 3 utilisation des profiles & propertySource
 Les Pdfs sont stockés dans un cdn pour la prod, différent de celui pour la dev
 Utiliser deux fichiers properties pour exposer les valeurs des deux cdn
 	pour dev => https://cdn.dev.impots
@@ -44,16 +43,17 @@ Ajouter un constructeur prenant en argument un paramètre de type UserService et
 	Initialiser les deux attributs de la classe DuplicataService avec les valeurs des paramètres du constructeur
 Changer la méthode de création d'un duplicata pour prendre en compte l'url du cdn
 
-========= Partie 4
-Observation des scopes des beans
+========= Partie 4 scope des beans
 Sur la classe de test, récupérer et afficher 3 fois le bean duplicataService; observer l'addresse mémoire
 Changer le scope du bean duplicataService en prototype et refaire la même manipulation 
 Remettre le scope à @Singleton
 
-========== Partie 4
+========== Partie 5 chargement fichier ressources dynamique
 créer deux fichiers properties : un pour le profil dev (application-dev.propeties) et un autre par défaut (application.properties)
-Utiliser le chargement dynamique du fichier application-dev.propeties si on démarre avec le profil dev :
-	(Notion de précédence) => Si deux @PropertySource sont dans une classe de config, les valeurs du dernier écrasent le premier
+Utiliser le chargement dynamique du fichier application-dev.propeties si on démarre avec le profil dev : Pour cela charger les deux fichiers properties
+via le fichier de configuration Java de telle sorte que les valeurs contenus dans le fichier application-dev.propeties soient chargé si le profil dev est activé
+
+
 
 	
 
