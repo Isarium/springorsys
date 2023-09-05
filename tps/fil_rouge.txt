@@ -1,0 +1,58 @@
+
+
+////////////// Application de génération de duplicata d'avis d'impots ////////////////
+
+==== Partie 1
+
+Objets du domaine
+
+Classe Duplicata
+	String id;
+	String userid;
+	Integer montant;
+	String pdfurl
+	
+Classe User
+	String id;
+	String name;
+	
+DuplicataService
+	List<Duplicata> duplicatas;
+	UserService userService;
+	getDuplicats() => retourne tous les duplicatas créés
+	createDuplicata () => crée un duplicata et le met dans la liste
+		createDuplicata => va faire appel à UserService pour vérifier si le user existe pas
+
+	
+UserService	
+	findById(String userId) => Rechercher en base si le user existe ou pas
+	
+==== Partie 2
+La configuration du bean pour utiliser @Value doit se faire en Java (et non en xml)
+Créer une classe géré par spring DummyDuplicatas qui va instancier quelques duplicatas au démarrage 
+de l'application si le profil spécifié est "dev" (Utilisation @PostConstruct)
+	=> appeler DuplicataService pour cela
+
+====== Partie 3
+Les Pdfs sont stockés dans un cdn pour la prod, différent de celui pour la dev
+Utiliser deux fichiers properties pour exposer les valeurs des deux cdn
+	pour dev => https://cdn.dev.impots
+	pour prod => https://cdn.prod.impots
+Modifier la méthode de création de duplicata pour prendre en compte le bon cdn selon le profil
+
+========== Partie 4
+créer deux fichiers properties : un pour le profil dev (application-dev.propeties) et un autre par défaut (application.properties)
+Utiliser le chargement dynamique du fichier application-dev.propeties si on démarre avec le profil dev :
+	(Notion de précédence) => Si deux @PropertySource sont dans une classe de config, les valeurs du dernier écrasent le premier
+
+	
+
+	
+	
+	
+
+
+	
+	
+	
+	
