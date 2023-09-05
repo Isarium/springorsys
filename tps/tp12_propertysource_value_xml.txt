@@ -1,13 +1,22 @@
 
 ======= comprendre les annotations @PropertySource et @Value et l'interface Environment avec une config Java =======
 
-Copier le projet 11_propertysource_value et renommer en 12_propertysource_value_xml
+Créer un projet 12_propertysource_value_xml
 
-Supprimer dans la classe AppConfig l'annotation @PropertySource(value = { "classpath:application.properties" })
+Ajouter la dépendance spring context dans le fichier pom.xml
 
-Supprimer aussi la méthode public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() 
+Créer un fichier application.properties dans src/main/resources avec le contenu suivant :
 
-Supprimer l'attribut environment de la classe FormationSpring. Voici le nouveau contenu de la classe FormationSpring :
+	formation.lieu = orsys
+	formation.module = spring
+	formation.date = 04092023
+
+Créer une interface FormationMetadata avec une méthode :
+	public void lireMetadata();
+	
+Créer une classe FormationSpring implémentant FormationMetadata
+	Annoter la classe avec @Service("formation_spring")
+	Voici le contenu de de la classe FormationSpring :
 
 	@Value("${formation.module:Java}")
     private String module;
@@ -28,6 +37,7 @@ Supprimer l'attribut environment de la classe FormationSpring. Voici le nouveau 
 		
 	}
 	
+	
 Créer un fichier context.xml avec le contenu suivant :
 
 	<context:component-scan base-package="com.formation" />
@@ -42,7 +52,6 @@ Créer un fichier context.xml avec le contenu suivant :
 	</bean>
 
 	
-Supprimer la classe de configuration 
 
 Créer une classe de test
 	Y initialiser le contexte Spring avec le fichier context.xml
