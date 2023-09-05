@@ -38,7 +38,11 @@ Les Pdfs sont stockés dans un cdn pour la prod, différent de celui pour la dev
 Utiliser deux fichiers properties pour exposer les valeurs des deux cdn
 	pour dev => https://cdn.dev.impots
 	pour prod => https://cdn.prod.impots
-Modifier la méthode de création de duplicata pour prendre en compte le bon cdn selon le profil
+
+Ajouter un nouveau champ cdnUrl dans la classe DuplicataService
+Ajouter un constructeur prenant en argument un paramètre de type UserService et un paramétre de type String 
+	Initialiser les deux attributs de la classe DuplicataService avec les valeurs des paramètres du constructeur
+Changer la méthode de création d'un duplicata pour prendre en compte l'url du cdn
 
 ========== Partie 4
 créer deux fichiers properties : un pour le profil dev (application-dev.propeties) et un autre par défaut (application.properties)
