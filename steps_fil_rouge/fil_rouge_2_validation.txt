@@ -43,5 +43,28 @@ Tester que la validation marche bien avec un appel sur le service avec le dto
 
 3 - Utiliser les annotations de la JSR 303 sur les paramétres de requête
 
+/////////////////// JSR 303 les plus courantes /////////////////////////
 
- 
+@AssertFalse / @AssertTrue 
+
+@DecimalMin / @DecimalMax 
+
+@Digits
+
+@Email
+
+@Min / @Max 
+
+@Negative / @NegativeOrZero 
+
+@NotBlank / @NotEmpty 
+
+@Null / @NotNull 
+
+@Past / @PastOrPresent 
+
+@Pattern 
+
+@Positive
+
+@Size 
