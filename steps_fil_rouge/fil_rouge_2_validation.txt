@@ -1,0 +1,47 @@
+ 
+//////////////////// Validation des champs sur un dto
+
+Spring propose une validation basique des champs des objets
+Pour une validation compléte, utiliser une implémentation de la JSR 301
+
+ AJouter les librairies sur le pom.xml
+ 
+	 <dependency>
+		<groupId>org.hibernate.validator</groupId>
+		<artifactId>hibernate-validator</artifactId>
+		<version>8.0.0.Final</version>
+	</dependency>
+	<dependency>
+		<groupId>org.glassfish.expressly</groupId>
+		<artifactId>expressly</artifactId>
+		<version>5.0.0</version>
+	</dependency>
+	
+
+Ajouter
+AJouter les annotations sur le dto DuplicataDto 
+
+  @NotBlank
+      @Min(10)
+    @Max(50)
+	
+Ajouter l'annotation @Valid sur le paramétre mappé avec la dto
+
+Tester que la validation marche bien avec un appel sur le service avec le dto
+
+
+/////////////// Validation sur les paramétres de requête
+
+1 - AJouter le bean suivant sur la classe de configuration
+
+	@Bean 
+    public MethodValidationPostProcessor methodValidationPostProcessor() {
+        return new MethodValidationPostProcessor();
+    }
+
+2 - AJouter sur le controlleur l'annotation @Validated
+
+3 - Utiliser les annotations de la JSR 303 sur les paramétres de requête
+
+
+ 
