@@ -1,0 +1,9 @@
+ 
+ 
+Ajouter un aspect qui affiche les paramétres des méthodes du bean duplicataService 
+	Uitlisre un aspect de type Before
+	Utiliser un objet en paramétre de l'aspect de type Joinpoint
+	
+Ajouter un aspect qui "FR_" sur userId lors de l'appel à createDuplicate avant l'appel à la vraie méthode 
+		Utiliser un aspect de type Around
+	Utiliser en paramétre de l'aspect un objet de type ProceedingJoinPoint
